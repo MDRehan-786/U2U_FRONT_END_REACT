@@ -41,25 +41,25 @@ function NavProfileDetail({ setIsProfileDetailOpen }) {
   // }, []);
 
   return (
-    <div className="absolute z-50 bg-[#1F2C24] rounded right-6 top-13 sm:min-w-90 p-1 text-xs sm:text-sm">
+    <div className="absolute z-50   backdrop-blur-[20px]  border border-[rgba(14,252,239,0.3)] rounded right-6 top-13 sm:min-w-90 p-1 text-xs sm:text-sm">
       <div
         onClick={() => setIsProfileDetailOpen(false)}
         className="flex items-center gap-3 px-4 rounded py-1 cursor-pointer hover:bg-[#4f5e54] transition ease-in-out duration-300"
       >
-        <FaUser className="bg-[#4f5e54] p-1 text-2xl rounded-full" />
+        <FaUser className="    border border-[rgba(14,252,239,0.3)]  p-1 text-2xl rounded-full" />
         <div className="text-xs font-semibold ">
           <div>{user.username}</div>
           <div>{user.email}</div>
         </div>
       </div>
 
-      <div className="h-[1px] bg-[#4f5e54] my-1"></div>
+      <div className="h-[1px]     border border-[rgba(14,252,239,0.3)] my-1"></div>
 
       <div
         onClick={() => setIsProfileDetailOpen(false)}
         className="flex items-center gap-3 px-4 rounded py-1 cursor-pointer  hover:bg-[#4f5e54] transition ease-in-out duration-300"
       >
-        <GiBanknote className="bg-[#4f5e54] p-1 text-2xl rounded-full" />
+        <GiBanknote className="    border border-[rgba(14,252,239,0.3)] p-1 text-2xl rounded-full" />
         <div className="text-xs font-semibold ">
           <div>
             Delegator Amount ${dashboardData.total_investment} / [Rank:{" "}
@@ -68,7 +68,7 @@ function NavProfileDetail({ setIsProfileDetailOpen }) {
         </div>
       </div>
 
-      <div className="h-[1px] bg-[#4f5e54] my-1"></div>
+      <div className="h-[1px]     border border-[rgba(14,252,239,0.3)] my-1"></div>
 
       <div
         onClick={() => {
@@ -77,7 +77,7 @@ function NavProfileDetail({ setIsProfileDetailOpen }) {
         }}
         className="flex items-center gap-3 px-4 rounded py-1 cursor-pointer  hover:bg-[#4f5e54] transition ease-in-out duration-300"
       >
-        <MdOutlineSecurity className="bg-[#4f5e54] p-1 text-2xl rounded-full" />
+        <MdOutlineSecurity className="    border border-[rgba(14,252,239,0.3)] p-1 text-2xl rounded-full" />
         <div className="text-xs font-semibold ">
           <div>
             {" "}
@@ -87,7 +87,7 @@ function NavProfileDetail({ setIsProfileDetailOpen }) {
         </div>
       </div>
 
-      <div className="h-[1px] bg-[#4f5e54] my-1"></div>
+      <div className="h-[1px]     border border-[rgba(14,252,239,0.3)] my-1"></div>
 
       <div
         onClick={() => {
@@ -98,7 +98,7 @@ function NavProfileDetail({ setIsProfileDetailOpen }) {
         }}
         className="flex items-center gap-3 px-4 rounded py-1 cursor-pointer  hover:bg-[#4f5e54] transition ease-in-out duration-300"
       >
-        <VscSignOut className="bg-[#4f5e54] p-1 text-2xl rounded-full" />
+        <VscSignOut className="    border border-[rgba(14,252,239,0.3)] p-1 text-2xl rounded-full" />
         <div className="text-xs font-semibold ">
           <div>Signout</div>
         </div>

@@ -10,6 +10,8 @@ import useConstStore from "./store/constStore";
 const Signin = React.lazy(() => import("./screens/Signin"));
 const Signup = React.lazy(() => import("./screens/Signup"));
 const Dashboard = React.lazy(() => import("./screens/Dashboard"));
+const ReferralHub = React.lazy(() => import("./screens/ReferralHub"));
+
 const PNF = React.lazy(() => import("./screens/PNF"));
 // import Support from "./screens/Support";
 const ForgetPassword = React.lazy(() => import("./screens/ForgetPassword"));
@@ -47,6 +49,14 @@ const DirectBonus = React.lazy(() => import("./screens/Income/DirectBonus"));
 const DelegatorLevelBonus = React.lazy(() =>
   import("./screens/Income/DelegatorLevelBonus")
 );
+const RankAndLeaderboard = React.lazy(() =>
+  import("./screens/Income/RankAndLeaderboard")
+);
+const RewardHistory = React.lazy(() => import("./screens/Income/RewardHistory"));
+
+const Transactions = React.lazy(() => import("./screens/Transactions"));
+const Notifications = React.lazy(() => import("./screens/Notifications"));
+
 const RankAndRewards = React.lazy(() =>
   import("./screens/Income/RankAndRewards")
 );
@@ -192,6 +202,7 @@ function App() {
           {/*private route*/}
           <Route element={<ProtectedRoute />}>
             <Route path="/dashboard" element={<Dashboard />} />
+             <Route path="/referralhub" element={<ReferralHub />} />
             {/* <Route path="/support" element={<Support />} /> */}
             <Route path="/chat" element={<Chat />} />
             <Route path="/invoice" element={<Invoice />} />
@@ -222,6 +233,10 @@ function App() {
               element={<DelegatorLevelBonus />}
             />
             <Route path="/rank&reward" element={<RankAndRewards />} />
+             <Route path="/rewardhistory" element={<RewardHistory />} />
+              <Route path="/transactions" element={<Transactions />} />
+               <Route path="/notifications" element={<Notifications />} />
+                <Route path="/rankandleaderboard" element={<RankAndLeaderboard />} />
             <Route path="/monthlysalary" element={<MonthlySalary />} />
 
             {/*delegator route*/}

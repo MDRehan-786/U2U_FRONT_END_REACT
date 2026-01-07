@@ -13,6 +13,15 @@ const Graph = React.lazy(() => import("../components/Dashboard/Graph"));
 const DetailedCards = React.lazy(() =>
   import("../components/Dashboard/DetailedCards")
 );
+
+const DepinSection = React.lazy(() =>
+  import("../components/Dashboard/DepinSection")
+);
+
+const ClaimReward = React.lazy(() =>
+  import("../components/Dashboard/ClaimReward")
+);
+
 const Link = React.lazy(() => import("../components/Dashboard/Link"));
 const Img = React.lazy(() => import("../components/Dashboard/Img"));
 const YouTube = React.lazy(() => import("../components/Dashboard/YouTube"));
@@ -114,24 +123,105 @@ function Dashboard() {
       balance: dashboardData?.user_wallet?.balance.toFixed(4),
       icon: FaWallet,
       show: true,
+      footer: "Total locked across all validators",
+      svg: ''
     },
     {
       title: "DEPOSIT BALANCE",
       balance: dashboardData?.user_wallet?.deposit_balance.toFixed(4),
       icon: FaWallet,
       show: true,
+      footer: "Total locked across all validators",
+      svg: ''
     },
     {
       title: "DIRECT TEAM",
       balance: dashboardData?.total_direct,
       icon: FaWallet,
       show: false,
+      footer: "Total locked across all validators",
+      svg: (
+      <svg
+        className="absolute top-0 right-0 h-full w-auto px-2"
+        width="30"
+        height="40"
+        viewBox="0 0 60 88"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g opacity="0.75">
+          <path d="M28.9384 39.3422L60 58.6512L31.2618 74.375L0 56.1276L28.9384 39.3422Z" fill="url(#paint0_linear)" />
+          <path d="M28.9384 30L60 49.309L31.2618 65.0328L0 46.7854L28.9384 30Z" fill="url(#paint1_linear)" />
+          <path d="M28.9384 20.4456L60 39.7546L31.2618 55.4784L0 37.231L28.9384 20.4456Z" fill="url(#paint2_linear)" />
+          <path d="M28.9384 11.9528L60 31.2618L31.2618 46.9856L0 28.7382L28.9384 11.9528Z" fill="url(#paint3_linear)" />
+        </g>
+        <defs>
+          <linearGradient id="paint0_linear" x1="45.6309" y1="43.0203" x2="14.3692" y2="71.7585" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#1E1822" />
+            <stop offset="1" stopColor="#3EECB5" />
+          </linearGradient>
+          <linearGradient id="paint1_linear" x1="45.6309" y1="33.6781" x2="14.3692" y2="62.4163" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#1E1822" />
+            <stop offset="1" stopColor="#3EECB5" />
+          </linearGradient>
+          <linearGradient id="paint2_linear" x1="45.6309" y1="24.1237" x2="14.3692" y2="52.8619" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#1E1822" />
+            <stop offset="1" stopColor="#3EECB5" />
+          </linearGradient>
+          <linearGradient id="paint3_linear" x1="45.6309" y1="15.6309" x2="14.3692" y2="44.3691" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#1E1822" />
+            <stop offset="1" stopColor="#3EECB5" />
+          </linearGradient>
+        </defs>
+      </svg>
+      )
     },
     {
       title: "LEVEL TEAM",
       balance: dashboardData?.all_team,
       icon: FaWallet,
       show: false,
+      footer: "Total locked across all validators",
+      svg: (<svg className="absolute top-0 right-0 h-full w-auto px-2" viewBox="0 0 60 61" width="30" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M43.5235 24.1619H35.3964V56.99H43.5235V24.1619Z" fill="url(#paint0_linear_96_566)" />
+        <path d="M54.5443 15.9811H46.4171V56.9868H54.5443V15.9811Z" fill="url(#paint1_linear_96_566)" />
+        <path d="M32.5027 32.3722H24.3755V56.9934H32.5027V32.3722Z" fill="url(#paint2_linear_96_566)" />
+        <path d="M21.4819 40.5826H13.3547V56.9967H21.4819V40.5826Z" fill="url(#paint3_linear_96_566)" />
+        <path d="M10.4614 48.793H2.33423V57.0001H10.4614V48.793Z" fill="url(#paint4_linear_96_566)" />
+        <path d="M0 45.892L23.0307 21.8403L23.6828 21.1593L24.3559 21.8887L28.8946 26.8065L27.3009 26.7507L48.0176 4.98303L50.7174 7.69691L28.8424 28.3003L27.9721 29.1199L27.2485 28.2444L22.9852 23.086L24.3103 23.1344L0 45.892Z" fill="url(#paint5_linear_96_566)" />
+        <path d="M52.4771 12.0572L55.7405 0L43.6666 3.20073L52.4771 12.0572Z" fill="url(#paint6_linear_96_566)" />
+        <defs>
+          <linearGradient id="paint0_linear_96_566" x1="39.4599" y1="24.1619" x2="39.4599" y2="56.99" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#1E1822" />
+            <stop offset="1" stopColor="#3EECB5" />
+          </linearGradient>
+          <linearGradient id="paint1_linear_96_566" x1="50.4807" y1="15.9811" x2="50.4807" y2="56.9868" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#1E1822" />
+            <stop offset="1" stopColor="#3EECB5" />
+          </linearGradient>
+          <linearGradient id="paint2_linear_96_566" x1="28.4391" y1="32.3722" x2="28.4391" y2="56.9934" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#1E1822" />
+            <stop offset="1" stopColor="#3EECB5" />
+          </linearGradient>
+          <linearGradient id="paint3_linear_96_566" x1="17.4183" y1="40.5826" x2="17.4183" y2="56.9967" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#1E1822" />
+            <stop offset="1" stopColor="#3EECB5" />
+          </linearGradient>
+          <linearGradient id="paint4_linear_96_566" x1="6.39781" y1="48.793" x2="6.39781" y2="57.0001" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#1E1822" />
+            <stop offset="1" stopColor="#3EECB5" />
+          </linearGradient>
+          <linearGradient id="paint5_linear_96_566" x1="25.3587" y1="4.98303" x2="25.3587" y2="45.892" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#1E1822" />
+            <stop offset="1" stopColor="#3EECB5" />
+          </linearGradient>
+          <linearGradient id="paint6_linear_96_566" x1="49.7036" y1="-2.90776e-08" x2="49.7036" y2="12.0572" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#1E1822" />
+            <stop offset="1" stopColor="#3EECB5" />
+          </linearGradient>
+        </defs>
+      </svg>
+      )
     },
   ];
 
@@ -146,7 +236,7 @@ function Dashboard() {
           <span className="text-[#1FD022] font-semibold">10.8%</span> per month
         </div>
       ),
-      showBtn: true,
+      showBtn: false,
     },
     {
       title: "DIRECT BONUS",
@@ -359,7 +449,9 @@ function Dashboard() {
       <Intro address={delegatorWalletAddress} />
 
       <Suspense fallback={<Loader />}>
-        <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-3 sm:gap-5">
+        <div className="grid sm:grid-cols-4 xl:grid-cols-4 gap-3 sm:gap-5
+      text-sm leading-4
+        ">
           {Data.map((item, index) => (
             <Card
               key={index}
@@ -367,32 +459,64 @@ function Dashboard() {
               title={item.title}
               balance={item.balance}
               show={item.show}
+              footer={item.footer}
+              svg={item.svg}
             />
+
+
           ))}
+
+
         </div>
       </Suspense>
+
+      <Suspense fallback={<Loader />}>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+          <div className="md:col-span-8 text-sm leading-4  rounded-[10px] border border-[rgba(14,252,239,0.3)]
+        bg-[rgba(0,0,0,0.001)]
+        shadow-[0px_4px_4px_rgba(0,0,0,0.25)]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 m-4 ">
+
+              {Data2.map((item, index) => (
+                <DetailedCards
+                  key={index}
+                  title={item.title}
+                  amount={item.amount}
+                  show={item.showBtn}
+                  balanceRoi={item.balanceRoi}
+                >
+                  {item.tag}
+                </DetailedCards>
+              ))}
+
+            </div>
+
+             <div className="grid grid-cols-1 md:grid-cols-1 gap-4 m-4">
+              <ClaimReward
+                balanceRoi={dashboardData?.user_wallet?.roi_pending.toFixed(4)}
+              />
+            </div>
+
+
+          </div>
+          <div className="md:col-span-4 p-4 rounded-[10px] border border-[rgba(14,252,239,0.3)]
+        bg-[rgba(0,0,0,0.001)]
+        shadow-[0px_4px_4px_rgba(0,0,0,0.25)]" >
+            <DepinSection />
+          </div>
+        </div>
+
+
+      </Suspense>
+
 
       <Suspense fallback={<Loader />}>
         <Graph />
       </Suspense>
 
-      <Suspense fallback={<Loader />}>
-        <div className="grid lg:grid-cols-2 gap-3 sm:gap-5">
-          {Data2.map((item, index) => (
-            <DetailedCards
-              key={index}
-              title={item.title}
-              amount={item.amount}
-              show={item.showBtn}
-              balanceRoi={item.balanceRoi}
-            >
-              {item.tag}
-            </DetailedCards>
-          ))}
-        </div>
-      </Suspense>
 
-      <Suspense fallback={<Loader />}>
+
+      {/* <Suspense fallback={<Loader />}>
         <Link />
       </Suspense>
 
@@ -402,7 +526,7 @@ function Dashboard() {
 
       <Suspense fallback={<Loader />}>
         <YouTube />
-      </Suspense>
+      </Suspense> */}
 
       <Suspense fallback={<Loader />}>
         <Transaction />

@@ -131,7 +131,7 @@ function MyDirect() {
 
   return (
     <div className="flex-1 p-4 flex flex-col overflow-x-hidden">
-      <div className="rounded-lg bg-[#1F2C24] px-5 py-2 mb-5">
+      <div className="rounded-lg border border-[rgba(14,252,239,0.3)] px-5 py-2 mb-5">
         <div className="font-semibold border-b border-gray-500 pb-3">
           My Direct Team
         </div>
@@ -147,7 +147,7 @@ function MyDirect() {
                 type="date"
                 value={fromDate}
                 onChange={(e) => setFromDate(e.target.value)}
-                className="md:w-50 rounded-lg px-3 bg-[#26362C] text-sm py-1.5"
+                className="md:w-50 rounded-lg px-3 border border-[rgba(14,252,239,0.3)] text-sm py-1.5"
               />
             </div>
             <div className="flex flex-col gap-1">
@@ -156,12 +156,12 @@ function MyDirect() {
                 type="date"
                 value={toDate}
                 onChange={(e) => setToDate(e.target.value)}
-                className="md:w-50 rounded-lg px-3 bg-[#26362C] text-sm py-1.5"
+                className="md:w-50 rounded-lg px-3 border border-[rgba(14,252,239,0.3)] text-sm py-1.5"
               />
             </div>
             <button
               onClick={handleDateFilter}
-              className="bg-green-400 h-fit md:self-end px-5 py-1 rounded-lg cursor-pointer hover:bg-green-500 transition duration-300"
+              className="border border-[rgba(14,252,239,0.3)] h-fit md:self-end px-5 py-1 rounded-lg cursor-pointer hover:bg-green-500 transition duration-300"
             >
               Search
             </button>
@@ -173,7 +173,7 @@ function MyDirect() {
               <select
                 value={rowsPerPage}
                 onChange={handleChangeRows}
-                className="bg-[#26362C] p-1 rounded-lg"
+                className="border border-[rgba(14,252,239,0.3)] p-1 rounded-lg"
               >
                 <option value={10}>10</option>
                 <option value={25}>25</option>
@@ -188,7 +188,7 @@ function MyDirect() {
                 value={searchValue}
                 onChange={handleSearch}
                 placeholder="Type to search"
-                className="bg-[#26362C] px-2 py-1 rounded-lg"
+                className="border border-[rgba(14,252,239,0.3)] px-2 py-1 rounded-lg"
               />
             </div>
           </div>
@@ -198,7 +198,7 @@ function MyDirect() {
         <div className="overflow-x-auto w-full max-w-full mt-4 h-128">
           <table className="table w-full text-xs">
             <thead className="text-gray-300">
-              <tr>
+                 <tr className="bg-[rgba(255,255,255,0.1)]">
                 <th>#</th>
                 <th>User ID</th>
                 <th>Name</th>
@@ -220,8 +220,8 @@ function MyDirect() {
                     <tr
                       className={
                         (index + startIdx) % 2 === 0
-                          ? "bg-[#303C34]"
-                          : "bg-[#1F2C24]"
+                          ? " "
+                          : " "
                       }
                     >
                       <td className="flex gap-2 items-center text-nowrap">
@@ -317,9 +317,10 @@ function MyDirect() {
                   key={p}
                   onClick={() => setCurrentPage(p)}
                   className={`px-2 cursor-pointer py-1 rounded ${
-                    currentPage === p
-                      ? "bg-green-400 text-white"
-                      : "bg-[#26362C] text-gray-200 hover:bg-[#1F2C24]"
+                     currentPage === p
+                    ? "bg-[rgba(255,255,255,0.5)] text-white"
+                    : "bg-[rgba(255,255,255,0.1)] text-gray-200 hover:bg-[#1F2C24]"
+               
                   }`}
                 >
                   {p}

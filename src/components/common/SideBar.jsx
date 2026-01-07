@@ -38,7 +38,8 @@ function SideBar() {
   };
 
   return (
-    <div className="w-65 absolute z-30 lg:relative inset-0 bg-black flex flex-col">
+    <div className="w-65 absolute z-30 lg:relative inset-0 flex flex-col  rounded-[10px] border border-[rgba(14,252,239,0.3)]
+    bg-[rgba(0,0,0,0.3)] backdrop-blur-[12px]">
       {/* Only this div scrolls */}
       <div className="flex-1 overflow-y-auto sidebar-scroll pt-3">
         {sidebarLinkData.map((data) => {

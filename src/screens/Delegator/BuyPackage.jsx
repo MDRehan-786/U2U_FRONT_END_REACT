@@ -51,7 +51,7 @@ function BuyPackage() {
 
   return (
     <div className=" p-4">
-      <div className="bg-[#1F2C24] h-fit rounded-3xl shadow-2xl w-full p-6 sm:p-10 flex flex-col overflow-hidden">
+      <div className="border border-[rgba(14,252,239,0.3)] h-fit rounded-3xl shadow-2xl w-full p-6 sm:p-10 flex flex-col overflow-hidden">
         {/* Title */}
         <h2 className="text-white text-3xl sm:text-4xl font-bold text-center mb-6 sm:mb-8">
           {selectedPackage.title}
@@ -70,7 +70,7 @@ function BuyPackage() {
 
           {/* Package Details */}
           <div className="flex-1 flex flex-col gap-4 w-full lg:w-1/2">
-            <div className="flex flex-col gap-2 bg-[#2B3A2E] p-4 rounded-xl shadow-inner">
+            <div className="flex flex-col gap-2  border border-[rgba(14,252,239,0.3)] p-4 rounded-xl shadow-inner">
               {[
                 selectedPackage.min_price &&
                   `Delegator: $${selectedPackage.min_price}`,
@@ -106,7 +106,18 @@ function BuyPackage() {
         <div className="flex justify-center mt-6 sm:mt-8">
           <button
             onClick={() => setIsModalOpen(true)}
-            className="bg-gradient-to-r cursor-pointer from-emerald-400 via-green-500 to-teal-400 hover:from-emerald-500 hover:via-green-600 hover:to-teal-500 text-white font-bold py-4 px-10 rounded-2xl shadow-lg transition-all duration-300 transform hover:scale-105"
+            className="
+text-black  
+  bg-[#3EECB5]
+  rounded-[8px]
+  px-4 py-3 text-sm font-medium
+  shadow-sm
+  transition-all duration-200 ease-in-out
+  hover:bg-[rgba(255,255,255,0.18)]
+  hover:text-white
+  hover:shadow-md
+  focus:outline-none w-fit mt-3 
+            "
           >
             Buy Now
           </button>
@@ -123,13 +134,35 @@ function BuyPackage() {
                 <button
                   onClick={handleSubmit}
                   disabled={loading}
-                  className="bg-emerald-500 cursor-pointer hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-xl transition-colors"
+                  className="
+               text-black  
+  bg-[#3EECB5]
+  rounded-[8px]
+  px-4 py-3 text-sm font-medium
+  shadow-sm
+  transition-all duration-200 ease-in-out
+  hover:bg-[rgba(255,255,255,0.18)]
+  hover:text-white
+  hover:shadow-md
+  focus:outline-none w-fit mt-3
+                  "
                 >
                   {loading ? "Purchasing..." : "Confirm"}
                 </button>
                 <button
                   onClick={() => setIsModalOpen(false)}
-                  className="bg-gray-700  cursor-pointer hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-xl transition-colors"
+                  className="
+text-black  
+  bg-[#3EECB5]
+  rounded-[8px]
+  px-4 py-3 text-sm font-medium
+  shadow-sm
+  transition-all duration-200 ease-in-out
+  hover:bg-[rgba(255,255,255,0.18)]
+  hover:text-white
+  hover:shadow-md
+  focus:outline-none w-fit mt-3
+                  "
                 >
                   Cancel
                 </button>

@@ -267,8 +267,8 @@ function PromoPackHistory() {
   return (
     <div className="flex-1 p-4 flex flex-col overflow-x-hidden">
       {showModel && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/60 bg-opacity-50 z-50">
-          <div className="bg-[#1F2C24] p-6 rounded-lg w-80 text-center">
+        <div className="fixed inset-0 flex items-center justify-center border border-[rgba(14,252,239,0.3)] bg-opacity-50 z-50">
+          <div className=" border border-[rgba(14,252,239,0.3)]  p-6 rounded-lg w-80 text-center">
             <h2 className="text-lg font-semibold mb-4">Are You Sure!</h2>
             <p className="mb-4">1 USDT Will Be Deducted From Your Wallet?</p>
             <div className="flex justify-around">
@@ -302,7 +302,7 @@ function PromoPackHistory() {
         </div>
       </div>
 
-      <div className="rounded-lg bg-[#1F2C24] px-5 py-2 my-5">
+      <div className="rounded-lg border border-[rgba(14,252,239,0.3)] px-5 py-2 my-5">
         <div className="font-semibold border-b border-gray-500 pb-3">
           Activation History
         </div>
@@ -311,15 +311,15 @@ function PromoPackHistory() {
           <div className="mt-5 flex sm:flex-row flex-col items-center gap-3 justify-between">
             <div>
               Show{" "}
-              <select
+               <select
                 value={rowsPerPage}
                 onChange={handleChangeRows}
-                className="bg-[#26362C] p-1 rounded-lg"
+                className="bg-[rgba(255,255,255,0.1)] p-1 rounded-lg"
               >
-                <option value={10}>10</option>
-                <option value={25}>25</option>
-                <option value={50}>50</option>
-                <option value={100}>100</option>
+           <option className="bg-[#0f172a] text-white" value={10}>10</option>
+  <option className="bg-[#0f172a] text-white" value={25}>25</option>
+  <option className="bg-[#0f172a] text-white" value={50}>50</option>
+  <option className="bg-[#0f172a] text-white" value={100}>100</option>
               </select>{" "}
               entries
             </div>
@@ -329,7 +329,7 @@ function PromoPackHistory() {
                 value={searchValue}
                 onChange={handleSearch}
                 placeholder="Type to search"
-                className="bg-[#26362C] px-2 py-1 rounded-lg"
+                className="border border-[rgba(14,252,239,0.3)] px-2 py-1 rounded-lg"
               />
             </div>
           </div>
@@ -362,8 +362,8 @@ function PromoPackHistory() {
                     <tr
                       className={
                         (index + startIdx) % 2 === 0
-                          ? "bg-[#303C34]"
-                          : "bg-[#1F2C24]"
+                          ? " "
+                          : " "
                       }
                     >
                       <td className="flex gap-2 items-center text-nowrap">
@@ -371,8 +371,9 @@ function PromoPackHistory() {
                           onClick={() => toggleExpand(startIdx + index)}
                           className={`w-5 h-5 cursor-pointer flex items-center justify-center rounded-full text-white font-semibold transition-transform duration-300 transform ${
                             expandedIndex === startIdx + index
-                              ? "bg-red-500 rotate-45"
-                              : "bg-green-400 hover:bg-green-500"
+                           ? "bg-[rgba(255,255,255,0.5)] text-white"
+                    : "bg-[rgba(255,255,255,0.1)] text-gray-200 hover:bg-[#1F2C24]"
+               
                           }`}
                         >
                           +
@@ -467,7 +468,7 @@ function PromoPackHistory() {
             <button
               disabled={currentPage === 1}
               onClick={() => setCurrentPage((p) => p - 1)}
-              className="px-2 py-1 cursor-pointer bg-[#26362C] rounded hover:bg-[#1F2C24] disabled:opacity-50"
+              className="px-2 py-1 cursor-pointer border border-[rgba(14,252,239,0.3)] rounded hover:bg-[#1F2C24] disabled:opacity-50"
             >
               Prev
             </button>

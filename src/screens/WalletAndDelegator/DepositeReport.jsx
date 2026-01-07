@@ -103,7 +103,7 @@ function DepositeReport() {
           History
         </div>
       </div>
-      <div className="rounded-lg bg-[#1F2C24] px-5 py-2 my-5">
+      <div className="rounded-lg border border-[rgba(14,252,239,0.3)] px-5 py-2 my-5">
         <div className="font-semibold border-b border-gray-500 pb-3">
           Deposit History
         </div>
@@ -112,15 +112,15 @@ function DepositeReport() {
           <div className="mt-5 flex sm:flex-row flex-col items-center gap-3 justify-between">
             <div>
               Show{" "}
-              <select
+                <select
                 value={rowsPerPage}
                 onChange={handleChangeRows}
-                className="bg-[#26362C] p-1 rounded-lg"
+                className="bg-[rgba(255,255,255,0.1)] p-1 rounded-lg"
               >
-                <option value={10}>10</option>
-                <option value={25}>25</option>
-                <option value={50}>50</option>
-                <option value={100}>100</option>
+           <option className="bg-[#0f172a] text-white" value={10}>10</option>
+  <option className="bg-[#0f172a] text-white" value={25}>25</option>
+  <option className="bg-[#0f172a] text-white" value={50}>50</option>
+  <option className="bg-[#0f172a] text-white" value={100}>100</option>
               </select>{" "}
               entries
             </div>
@@ -130,7 +130,7 @@ function DepositeReport() {
                 value={searchValue}
                 onChange={handleSearch}
                 placeholder="Type to search"
-                className="bg-[#26362C] px-2 py-1 rounded-lg"
+                className="border border-[rgba(14,252,239,0.3)] px-2 py-1 rounded-lg"
               />
             </div>
           </div>
@@ -139,7 +139,7 @@ function DepositeReport() {
         <div className="overflow-x-auto w-full max-w-full mt-4 h-118">
           <table className="table w-full text-xs ">
             <thead className="text-gray-300">
-              <tr>
+                <tr className="bg-[rgba(255,255,255,0.1)]">
                 <th>Created On</th>
                 <th>Transaction Id</th>
                 <th>Hash</th>
@@ -162,8 +162,8 @@ function DepositeReport() {
                     key={index}
                     className={
                       (index + startIdx) % 2 === 0
-                        ? "bg-[#303C34]"
-                        : "bg-[#1F2C24]"
+                        ? " "
+                        : " "
                     }
                   >
                     <td className="flex gap-2 items-center text-nowrap">
@@ -233,8 +233,9 @@ function DepositeReport() {
                   onClick={() => setCurrentPage(p)}
                   className={`px-2 cursor-pointer py-1 rounded ${
                     currentPage === p
-                      ? "bg-green-400 text-white"
-                      : "bg-[#26362C] text-gray-200 hover:bg-[#1F2C24]"
+                     ? "bg-[rgba(255,255,255,0.5)] text-white"
+                    : "bg-[rgba(255,255,255,0.1)] text-gray-200 hover:bg-[#1F2C24]"
+               
                   }`}
                 >
                   {p}

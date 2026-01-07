@@ -220,8 +220,8 @@ function DepositeFund() {
 
   return (
     <div className="flex-1 flex justify-center p-4">
-      <div className="bg-[#1F2C24] mt-5 rounded-lg w-full sm:w-10/12 md:w-9/12 h-fit">
-        <div className="text-lg font-semibold border-b py-3 px-5 border-[#35443b]">
+      <div className="border border-[rgba(14,252,239,0.3)] mt-5 rounded-lg w-full sm:w-10/12 md:w-9/12 h-fit">
+        <div className="text-lg font-semibold border-b py-3 px-5  border-[rgba(14,252,239,0.3)]">
           Deposit{" "}
         </div>
         <div className="py-5 px-5 flex flex-col gap-3 text-sm">
@@ -273,7 +273,7 @@ function DepositeFund() {
               value={amount}
               type="number"
               placeholder="Enter Amount"
-              className="bg-[#26362C] rounded px-3 py-0.5 pr-10"
+              className="border border-[rgba(14,252,239,0.3)] rounded px-3 py-0.5 pr-10"
             />
           </div>
 

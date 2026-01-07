@@ -46,3 +46,17 @@ body {
   background: #e0e0e0;
   box-shadow: inset 14px 14px 28px #898989, inset -14px -14px 28px #ffffff;
 }
+
+
+
+
+
+.apexcharts-datalabel-value {
+  fill: #ffffff !important;
+  font-weight: 700 !important;
+  font-size:22px;
+}
+
+
+ 
+

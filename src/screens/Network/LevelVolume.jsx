@@ -50,7 +50,7 @@ function LevelVolume() {
           <span className="text-green-300">Network</span> {">>"} Level Network
         </div>
       </div>
-      <div className="rounded-lg bg-[#1F2C24] px-5 py-2 my-5">
+      <div className="rounded-lg border border-[rgba(14,252,239,0.3)] px-5 py-2 my-5">
         <div className="font-semibold border-b border-gray-500 pb-3 ">
           Level Network
         </div>
@@ -58,7 +58,7 @@ function LevelVolume() {
         <div className="overflow-x-auto mt-4 w-full max-w-full">
           <table className="table w-full text-xs ">
             <thead className="text-gray-300">
-              <tr>
+                 <tr className="bg-[rgba(255,255,255,0.1)]">
                 <th className="text-center"> Level</th>
                 <th className="text-center">Total User</th>
                 <th className="text-center">Active User</th>

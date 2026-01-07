@@ -1,4 +1,4 @@
-import { SlDocs, SlScreenDesktop } from "react-icons/sl";
+import { SlDocs, SlScreenDesktop,SlBell ,SlShuffle  } from "react-icons/sl";
 import { IoIosColorPalette } from "react-icons/io";
 import { GoDotFill } from "react-icons/go";
 import {
@@ -32,6 +32,7 @@ export const sidebarLinkData = [
     title: "Network",
     icon: FaCircleHalfStroke,
     subRoute: [
+        { id: 31, title: "Referral Hub", icon: GoDotFill, path: "/referralhub" },
       { id: 31, title: "My Direct", icon: GoDotFill, path: "/mydirect" },
       { id: 32, title: "Team Network", icon: GoDotFill, path: "/teamnetwork" },
       { id: 33, title: "Level Network", icon: GoDotFill, path: "/levelvolume" },
@@ -60,13 +61,13 @@ export const sidebarLinkData = [
         id: 44,
         title: "Rank & Rewards",
         icon: GoDotFill,
-        path: "/rank&reward",
+        path: "/rankandleaderboard",
       },
       {
         id: 45,
-        title: "Monthly Salary",
+        title: "Reward History",
         icon: GoDotFill,
-        path: "/monthlysalary",
+        path: "/rewardhistory",
       },
     ],
   },
@@ -106,12 +107,12 @@ export const sidebarLinkData = [
         icon: GoDotFill,
         path: "/delegateusdtbep20",
       },
-      {
-        id: 62,
-        title: "Delegator Report",
-        icon: GoDotFill,
-        path: "/delegatorreport",
-      },
+      // {
+      //   id: 62,
+      //   title: "Delegator Report",
+      //   icon: GoDotFill,
+      //   path: "/delegatorreport",
+      // },
       {
         id: 63,
         title: "Deposit Fund",
@@ -133,7 +134,10 @@ export const sidebarLinkData = [
       },
     ],
   },
-  {
+
+    { id: 14, title: "Transactions", icon: SlShuffle, path: "/transactions" },
+  { id: 15, title: "Notifications", icon: SlBell, path: "/notifications" },
+      {
     id: 7,
     title: "Web Link",
     icon: FaCircleHalfStroke,

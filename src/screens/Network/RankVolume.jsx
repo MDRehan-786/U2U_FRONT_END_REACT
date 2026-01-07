@@ -48,7 +48,7 @@ function RankVolume() {
           <span className="text-green-300">Rank Volume</span> {">>"} Network
         </div>
       </div>
-      <div className="rounded-lg overflow-hidden bg-[#1F2C24] px-5 py-2 my-5">
+      <div className="rounded-lg overflow-hidden border border-[rgba(14,252,239,0.3)] px-5 py-2 my-5">
         <div className="font-semibold border-b border-gray-500 pb-3 ">
           Rank Volume
         </div>
@@ -56,7 +56,7 @@ function RankVolume() {
         <div className="overflow-x-auto mt-4 ">
           <table className="table w-full text-xs ">
             <thead className="text-gray-300">
-              <tr>
+                 <tr className="bg-[rgba(255,255,255,0.1)]">
                 <th>Strong Leg / Other Leg (Criteria)</th>
                 <th>Strong Leg Volume</th>
                 <th>Other Leg Volume</th>

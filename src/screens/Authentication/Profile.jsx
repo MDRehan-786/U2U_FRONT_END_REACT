@@ -169,12 +169,12 @@ function Profile() {
         </div>
       </div>
       <div className="flex flex-col xl:flex-row gap-5 my-5">
-        <div className="xl:w-80 h-fit rounded-lg overflow-hidden">
+        <div className="xl:w-80 h-fit rounded-lg overflow-hidden border border-[rgba(14,252,239,0.3)]">
           <div className="h-40">
-            <div className="bg-[#0B2816] pt-3 text-[#38C653] px-3 h-1/2 text-xl font-semibold">
+            <div className=" border border-[rgba(14,252,239,0.3)] pt-3   px-3 h-1/2 text-xl font-semibold">
               Welcome Back !
             </div>
-            <div className="bg-[#1F2C24] border-b border-[#27382E] px-3 h-1/2 relative">
+            <div className="   border-[rgba(14,252,239,0.3)] px-3 h-1/2 relative">
               <div className="w-16 h-16 bg-[#26362D] rounded-full p-3 flex items-center justify-center absolute -top-7">
                 <img
                   className=""
@@ -183,7 +183,7 @@ function Profile() {
               </div>
             </div>
           </div>
-          <div className="bg-[#1F2C24] p-3 flex flex-col gap-3">
+          <div className=" p-3 flex flex-col gap-3">
             <div className="flex items-center gap-2 text-sm">
               <FaUser className="text-green-500" />{" "}
               <span className="flex gap-5 xl:gap-2">
@@ -205,7 +205,7 @@ function Profile() {
           </div>
         </div>
 
-        <div className="bg-[#1F2C24] flex-1 h-fit rounded-lg p-3">
+        <div className="border border-[rgba(14,252,239,0.3)] flex-1 h-fit rounded-lg p-3">
           <div className="font-semibold text-lg border-b border-[#27382E] pb-2">
             Profile Settings
           </div>
@@ -216,7 +216,7 @@ function Profile() {
               <input
                 value={user?.username}
                 type="text"
-                className="bg-[#26362C] rounded px-3 py-0.5"
+                className="border border-[rgba(14,252,239,0.3)] rounded px-3 py-0.5"
                 disabled
               />
             </div>
@@ -226,7 +226,7 @@ function Profile() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 type="text"
-                className="bg-[#26362C] rounded px-3 py-0.5"
+                className="border border-[rgba(14,252,239,0.3)] rounded px-3 py-0.5"
               />
             </div>
             <div className="flex flex-col">
@@ -234,7 +234,7 @@ function Profile() {
               <input
                 value={user?.email}
                 type="text"
-                className="bg-[#26362C] rounded px-3 py-0.5"
+                className="border border-[rgba(14,252,239,0.3)] rounded px-3 py-0.5"
                 disabled
               />
             </div>
@@ -244,7 +244,7 @@ function Profile() {
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
                 required
-                className="rounded bg-[#26362C] px-3 py-0.5"
+                className="rounded border border-[rgba(14,252,239,0.3)] px-3 py-0.5"
               >
                 <option value="">Select country</option>
                 {countries?.map((item, index) => (
@@ -261,7 +261,7 @@ function Profile() {
                 value={address}
                 // disabled
                 type="text"
-                className="bg-[#26362C] rounded px-3 py-0.5"
+                className="border border-[rgba(14,252,239,0.3)] rounded px-3 py-0.5"
               />
             </div>
             <div className="flex flex-col">
@@ -271,7 +271,7 @@ function Profile() {
                 value={U2UAddress}
                 // disabled
                 type="text"
-                className="bg-[#26362C] rounded px-3 py-0.5"
+                className="border border-[rgba(14,252,239,0.3)] rounded px-3 py-0.5"
               />
             </div>
             <div className="flex flex-col">
@@ -285,7 +285,7 @@ function Profile() {
                     setImage(file);
                   }
                 }}
-                className="bg-[#26362C] rounded px-3 py-0.5"
+                className="border border-[rgba(14,252,239,0.3)] rounded px-3 py-0.5"
               />
               <img
                 src={user?.image ? user?.image : profileImgSrc}
@@ -300,12 +300,12 @@ function Profile() {
                   onChange={(e) => setOtp(e.target.value)}
                   value={otp}
                   type="text"
-                  className="bg-[#26362C] rounded px-3 py-0.5"
+                  className="border border-[rgba(14,252,239,0.3)] rounded px-3 py-0.5"
                 />
                 <button
                   onClick={handleOtp}
                   disabled={sendingOtp || loading}
-                  className="bg-[#22b357] hover:bg-[#56CF82] transition ease-in-out duration-300 cursor-pointer px-3 py-0.5 rounded w-fit mt-3"
+                  className="border border-[rgba(14,252,239,0.3)] hover:bg-[#56CF82] transition ease-in-out duration-300 cursor-pointer px-3 py-0.5 rounded w-fit mt-3"
                 >
                   {sendingOtp
                     ? "Sending OTP..."
@@ -341,7 +341,7 @@ function Profile() {
                     onChange={(e) => setOtpfa(e.target.value)}
                     value={otpfa}
                     type="text"
-                    className="bg-[#26362C] rounded px-3 py-0.5"
+                    className="border border-[rgba(14,252,239,0.3)] rounded px-3 py-0.5"
                   />
                 </div>
               ) : (
@@ -351,7 +351,7 @@ function Profile() {
                     onChange={(e) => setOtp(e.target.value)}
                     value={otp}
                     type="text"
-                    className="bg-[#26362C] rounded px-3 py-0.5"
+                    className="border border-[rgba(14,252,239,0.3)] rounded px-3 py-0.5"
                   />
                   <button
                     onClick={handleOtp}
@@ -371,7 +371,16 @@ function Profile() {
               <button
                 onClick={handleSubmit}
                 disabled={loading}
-                className="bg-[#22b357] hover:bg-[#56CF82] transition ease-in-out duration-300 cursor-pointer px-3 py-0.5 rounded w-fit mt-3"
+                className="text-black  
+  bg-[#3EECB5]
+  rounded-[8px]
+  px-4 py-2 text-sm font-medium
+  shadow-sm
+  transition-all duration-200 ease-in-out
+  hover:bg-[rgba(255,255,255,0.18)]
+  hover:text-white
+  hover:shadow-md
+  focus:outline-none w-fit mt-3"
               >
                 {loading ? "Loading..." : "Submit"}
               </button>

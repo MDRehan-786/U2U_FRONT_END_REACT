@@ -7,16 +7,25 @@ function Transaction() {
   // console.log("transation")
 
   return (
-    <div className="rounded-lg">
-      <div className="flex gap-3 items-center bg-gradient-to-br from-[#0F0F1D] via-[#102031] to-[#24BB79] p-3 text-lg font-semibold">
+    <div className="rounded-[10px] 
+                  border border-[rgba(14,252,239,0.3)]
+                bg-[rgba(0,0,0,0.001)]
+                shadow-[0px_4px_4px_rgba(0,0,0,0.25)]">
+      <div className="flex gap-3 items-center  
+                  p-3 text-lg font-semibold">
         <TfiReload /> Transaction History
       </div>
-      <div className="flex gap-3 pb-50 items-center bg-gradient-to-br from-[#0F0F1D] via-[#102031] to-[#24BB79] p-3 text-lg font-semibold">
-        <div className="overflow-x-auto w-full rounded-box border border-base-content/5 bg-[#1F2C24]">
+      <div className="flex gap-3 pb-50 items-center  
+                bg-[rgba(0,0,0,0.001)]
+                shadow-[0px_4px_4px_rgba(0,0,0,0.25)]  p-3 text-lg font-semibold">
+        <div className="overflow-x-auto w-full   
+                 
+                bg-[rgba(0,0,0,0.001)]
+                shadow-[0px_4px_4px_rgba(0,0,0,0.25)] ">
           <table className="table w-full">
-            <thead className="text-white">
-              <tr>
-                <th>Transaction Id</th>
+            <thead className="text-white ">
+              <tr className="bg-[rgba(255,255,255,0.1)]">
+                <th className=' '>Transaction Id</th>
                 <th>Amount</th>
                 <th>Mode</th>
                 <th>Remarks</th>

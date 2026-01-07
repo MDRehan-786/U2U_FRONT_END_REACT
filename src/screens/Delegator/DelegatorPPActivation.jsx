@@ -54,15 +54,15 @@ function DelegatorPPActivation() {
         {data.map((item, index) => (
           <div
             key={index}
-            className="flex-1 min-w-[250px] md:min-w-[300px] lg:min-w-[350px] bg-[#1F2C24] rounded-lg py-2 px-5"
+            className="flex-1 min-w-[250px] md:min-w-[300px] lg:min-w-[350px]  border border-[rgba(14,252,239,0.3)] rounded-lg py-2 px-5"
           >
             {/* Header */}
-            <div className="font-semibold border-b pb-2 border-[#344139]">
+            <div className="font-semibold border-b pb-2   border-[rgba(14,252,239,0.3)]">
               Package Plan
             </div>
 
             {/* Image and Price */}
-            <div className="relative p-6 pt-8 pb-16 mt-3 flex flex-col gap-3 items-center bg-[#0B2816] rounded-lg">
+            <div className="relative p-6 pt-8 pb-16 mt-3 flex flex-col gap-3 items-center border border-[rgba(14,252,239,0.3)] rounded-lg">
               <img
                 className="w-full max-w-[180px] sm:max-w-[220px] md:max-w-[250px] lg:max-w-[300px] xl:max-w-[350px] object-contain"
                 src={item.image}
@@ -73,7 +73,7 @@ function DelegatorPPActivation() {
                 </span>
                 /Pack
               </span>
-              <div className="absolute text-xs sm:text-sm md:text-base lg:text-lg bg-[#41C3A9] p-2 text-center rounded-full w-36 sm:w-48 md:w-56 lg:w-64 -bottom-7 font-semibold">
+              <div className="absolute text-xs sm:text-sm md:text-base  backdrop-blur-[5px] lg:text-lg bg-[rgba(56,223,170,0.2)]  border border-[rgba(14,252,239,0.3)] p-2 text-center rounded-full w-36 sm:w-48 md:w-56 lg:w-64 -bottom-7 font-semibold">
                 {item.title}
               </div>
             </div>
@@ -139,8 +139,20 @@ function DelegatorPPActivation() {
                   naviagte("/buypackage", { state: { package: item } })
                 }
                 // disabled
-                className=" mx-auto mb-3 bg-[#38C66C] cursor-pointer py-0.5 px-3 rounded hover:bg-[#59b87b]"
-              >
+                className=" 
+                 text-black  
+  bg-[#3EECB5]
+  rounded-[8px]
+  px-4 py-3 text-sm font-medium
+  shadow-sm
+  transition-all duration-200 ease-in-out
+  hover:bg-[rgba(255,255,255,0.18)]
+  hover:text-white
+  hover:shadow-md
+  focus:outline-none w-fit mt-3
+                "
+            
+            >
                 Activate Now
               </button>
             </div>

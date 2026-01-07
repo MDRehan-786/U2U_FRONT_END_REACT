@@ -68,8 +68,8 @@ function LoginPassword() {
 
   return (
     <div className="flex-1 flex justify-center p-4">
-      <div className="bg-[#1F2C24] mt-5 rounded-lg w-full sm:w-10/12 md:w-9/12 h-fit">
-        <div className="text-lg font-semibold border-b py-3 px-5 border-[#35443b]">
+      <div className=" border border-[rgba(14,252,239,0.3)] mt-5 rounded-lg w-full sm:w-10/12 md:w-9/12 h-fit">
+        <div className="text-lg font-semibold border-b py-3 px-5 border border-[rgba(14,252,239,0.3)]">
           Change Password
         </div>
         <div className="py-5 px-5 flex flex-col gap-3">
@@ -83,7 +83,7 @@ function LoginPassword() {
               value={currentPassword}
               onChange={(e) => setCurrentPassword(e.target.value)}
               type={showCurrent ? "text" : "password"}
-              className="bg-[#26362C] rounded px-3 py-0.5 pr-10"
+              className="border border-[rgba(14,252,239,0.3)]  rounded px-3 py-0.5 pr-10"
             />
             <span
               onClick={() => setShowCurrent(!showCurrent)}
@@ -103,7 +103,7 @@ function LoginPassword() {
               onChange={(e) => setNewPassword(e.target.value)}
               placeholder="New Password"
               type={showNew ? "text" : "password"}
-              className="bg-[#26362C] rounded px-3 py-0.5 pr-10"
+              className="border border-[rgba(14,252,239,0.3)] rounded px-3 py-0.5 pr-10"
             />
             <span
               onClick={() => setShowNew(!showNew)}
@@ -123,7 +123,7 @@ function LoginPassword() {
               onChange={(e) => setConfirmNewPassword(e.target.value)}
               placeholder="Re-Type Password"
               type={showConfirm ? "text" : "password"}
-              className="bg-[#26362C] rounded px-3 py-0.5 pr-10"
+              className="border border-[rgba(14,252,239,0.3)] rounded px-3 py-0.5 pr-10"
             />
             <span
               onClick={() => setShowConfirm(!showConfirm)}
@@ -138,7 +138,16 @@ function LoginPassword() {
             <button
               onClick={handleSubmit}
               disabled={loading}
-              className="bg-[#22b357] hover:bg-[#56CF82] transition ease-in-out duration-300 cursor-pointer px-3 py-0.5 rounded w-fit mt-3"
+              className=" text-black  
+  bg-[#3EECB5]
+  rounded-[8px]
+  px-4 py-2 text-sm font-medium
+  shadow-sm
+  transition-all duration-200 ease-in-out
+  hover:bg-[rgba(255,255,255,0.18)]
+  hover:text-white
+  hover:shadow-md
+  focus:outline-none w-fit mt-3"
             >
               {loading ? "Resetting Password..." : "Submit"}
             </button>

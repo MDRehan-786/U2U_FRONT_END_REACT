@@ -23,7 +23,12 @@ function Navbar() {
         />
         <div
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className="bg-gradient-to-r cursor-pointer from-[#01CAFF] to-[#91FE9D] w-8 h-8 rounded flex items-center justify-center text-white text-xl"
+          className="
+               text-[#3EECB5] bg-[rgba(62,236,181,0.2)]  
+               transition-all duration-200 ease-in-out
+               hover:bg-[rgba(255,255,255,0.3)]
+               hover:text-white hover:shadow-md
+               focus:outline-none cursor-pointer w-8 h-8 rounded flex items-center justify-center text-white text-xl"
         >
           <MdMenuOpen />
         </div>
@@ -32,7 +37,7 @@ function Navbar() {
         onClick={() => {
           setIsProfileDetailOpen((prev) => !prev);
         }}
-        className="rounded w-10 h-10 bg-[#1F2C24] flex items-center cursor-pointer justify-center hover:bg-[#38C66C] transition ease-in-out duration-300"
+        className="rounded w-10 h-10     border border-[rgba(14,252,239,0.3)] flex items-center cursor-pointer justify-center hover:bg-[#38C66C] transition ease-in-out duration-300"
       >
         <img
           src={user.image ? user.image : profileImgSrc}

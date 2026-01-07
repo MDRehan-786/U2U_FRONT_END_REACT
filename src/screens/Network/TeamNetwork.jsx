@@ -127,13 +127,13 @@ function TeamNetwork() {
         </div>
       </div>
 
-      <div className="rounded-lg bg-[#1F2C24] px-5 py-2 my-5">
+      <div className="rounded-lg  border border-[rgba(14,252,239,0.3)] px-5 py-2 my-5">
         <div className="font-semibold border-b border-gray-500 pb-3">
           Team Network{" "}
           <select
             value={level}
             onChange={handleLevel}
-            className="bg-[#26362C] px-1 py-0.5 ml-2 rounded-lg text-sm"
+            className=" border border-[rgba(14,252,239,0.3)] px-1 py-0.5 ml-2 rounded-lg text-sm"
           >
             <option value="">Select Level</option>
             <option value="0">All</option>
@@ -167,7 +167,7 @@ function TeamNetwork() {
               <select
                 value={rowsPerPage}
                 onChange={handleChangeRows}
-                className="bg-[#26362C] p-1 rounded-lg"
+                className="border border-[rgba(14,252,239,0.3)] p-1 rounded-lg"
               >
                 {[10, 25, 50, 100].map((num) => (
                   <option key={num} value={num}>
@@ -183,7 +183,7 @@ function TeamNetwork() {
                 value={searchValue}
                 onChange={handleSearch}
                 placeholder="Type to search"
-                className="bg-[#26362C] px-2 py-1 rounded-lg"
+                className="border border-[rgba(14,252,239,0.3)] px-2 py-1 rounded-lg"
               />
             </div>
           </div>
@@ -192,7 +192,7 @@ function TeamNetwork() {
         <div className="overflow-x-auto mt-4 w-full max-w-full h-114">
           <table className="table w-full text-xs">
             <thead className="text-gray-300">
-              <tr>
+               <tr className="bg-[rgba(255,255,255,0.1)]">
                 <th>#</th>
                 <th>Referral ID</th>
                 <th>User ID</th>
@@ -267,8 +267,9 @@ function TeamNetwork() {
                   onClick={() => setCurrentPage(p)}
                   className={`px-2 cursor-pointer py-1 rounded ${
                     currentPage === p
-                      ? "bg-green-400 text-white"
-                      : "bg-[#26362C] text-gray-200 hover:bg-[#1F2C24]"
+                       ? "bg-[rgba(255,255,255,0.5)] text-white"
+                    : "bg-[rgba(255,255,255,0.1)] text-gray-200 hover:bg-[#1F2C24]"
+               
                   }`}
                 >
                   {p}

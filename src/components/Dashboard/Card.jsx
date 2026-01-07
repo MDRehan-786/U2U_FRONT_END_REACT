@@ -1,13 +1,29 @@
-function Card({ title, balance, icon, show }) {
-  const Icon = icon;
+function Card({ title, balance, icon: Icon, show, footer,svg }) {
   return (
-    <div className="rounded-lg overflow-hidden flex flex-col">
-      <div className="flex gap-3 text-nowrap items-center p-3 bg-gradient-to-br from-[#0F0F1D] via-[#102031] to-[#24BB79]">
-        <Icon /> {title}
+    <div className="relative font-sans rounded-[10px] border border-[rgba(14,252,239,0.3)] bg-[rgba(0,0,0,0.2)] overflow-hidden flex flex-col">
+      
+      {/* Main content */}
+      <div className="flex flex-col p-3 flex-1">
+        {/* Title and optional icon */}
+        <div className="flex justify-between items-center gap-3">
+          <span>{title}</span>
+        
+        </div>
+
+        {/* Balance */}
+        <div className="text-2xl font-semibold leading-[22px] mt-2 py-3">
+          {show && "$"}{balance ? balance : "0.0000"}
+        </div>
+
+        {/* Footer */}
+        <div className="font-normal text-[12px] leading-[14px] text-[#9EB4AF] mt-auto">
+          {footer}
+        </div>
       </div>
-      <div className="bg-gradient-to-br py-6 px-8 font-bold text-2xl from-[#0F0F1D] via-[#102031] to-[#24BB79]">
-        {show && "$"} {balance ? balance : "0.0000"}
-      </div>
+    
+ {svg} 
+    
+
     </div>
   );
 }
