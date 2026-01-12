@@ -12,8 +12,8 @@ function DepinSection() {
   const navigate = useNavigate();
   return (
   <div className="box-border flex flex-col gap-3">
-      <div className="flex flex-col gap-3 justify-between">
-     <div className="grid grid-cols-1 md:grid-rows-2 gap-4">
+      <div className="flex flex-col gap-3 justify-center items-center">
+     <div className="grid grid-cols-1 md:grid-rows-2 gap-5">
          
           <div>
            <img src={depinImg} className='h-[200px] w-full rounded-[10px]'  />

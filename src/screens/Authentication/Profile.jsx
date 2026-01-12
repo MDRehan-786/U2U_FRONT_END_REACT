@@ -163,9 +163,9 @@ function Profile() {
   return (
     <div className="p-4 flex-1 overflow-x-hidden flex flex-col">
       <div className="flex justify-between items-center">
-        <div className="text-lg font-semibold">Contact</div>
+        <div className="text-lg font-semibold">Profile</div>
         <div className="text-xs">
-          <span className="text-green-300">Apps</span> {">>"} Contact
+          <span className="text-green-300">Authentication</span> {">>"} Profile
         </div>
       </div>
       <div className="flex flex-col xl:flex-row gap-5 my-5">
@@ -175,7 +175,7 @@ function Profile() {
               Welcome Back !
             </div>
             <div className="   border-[rgba(14,252,239,0.3)] px-3 h-1/2 relative">
-              <div className="w-16 h-16 bg-[#26362D] rounded-full p-3 flex items-center justify-center absolute -top-7">
+              <div className="w-16 h-16 backdrop-blur-[5px] border border-[rgba(14,252,239,0.3)]  rounded-full p-3 flex items-center justify-center absolute -top-7">
                 <img
                   className=""
                   src={user?.image ? user?.image : profileImgSrc}
@@ -216,7 +216,8 @@ function Profile() {
               <input
                 value={user?.username}
                 type="text"
-                className="border border-[rgba(14,252,239,0.3)] rounded px-3 py-0.5"
+                className="  px-4 py-2    rounded-[10px] border border-[rgba(14,252,239,0.3)] bg-[rgba(0,0,0,0.2)]"
+              
                 disabled
               />
             </div>
@@ -226,15 +227,17 @@ function Profile() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 type="text"
-                className="border border-[rgba(14,252,239,0.3)] rounded px-3 py-0.5"
-              />
+              className="  px-4 py-2    rounded-[10px] border border-[rgba(14,252,239,0.3)] bg-[rgba(0,0,0,0.2)]"
+              
+            />
             </div>
             <div className="flex flex-col">
               <span className="">E-Mail</span>
               <input
                 value={user?.email}
                 type="text"
-                className="border border-[rgba(14,252,239,0.3)] rounded px-3 py-0.5"
+               className="  px-4 py-2    rounded-[10px] border border-[rgba(14,252,239,0.3)] bg-[rgba(0,0,0,0.2)]"
+              
                 disabled
               />
             </div>
@@ -244,11 +247,12 @@ function Profile() {
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
                 required
-                className="rounded border border-[rgba(14,252,239,0.3)] px-3 py-0.5"
-              >
-                <option value="">Select country</option>
+            className="  px-4 py-2    rounded-[10px] border border-[rgba(14,252,239,0.3)] bg-[rgba(0,0,0,0.2)]"
+              
+           >
+                <option  className="bg-[#0f172a] text-white" value="">Select country</option>
                 {countries?.map((item, index) => (
-                  <option key={index} value={item.id}>
+                  <option className="bg-[#0f172a] text-white" key={index} value={item.id}>
                     {item.name}
                   </option>
                 ))}
@@ -261,8 +265,9 @@ function Profile() {
                 value={address}
                 // disabled
                 type="text"
-                className="border border-[rgba(14,252,239,0.3)] rounded px-3 py-0.5"
-              />
+             className="  px-4 py-2    rounded-[10px] border border-[rgba(14,252,239,0.3)] bg-[rgba(0,0,0,0.2)]"
+              
+            />
             </div>
             <div className="flex flex-col">
               <span className="">U2U Wallet</span>
@@ -271,8 +276,9 @@ function Profile() {
                 value={U2UAddress}
                 // disabled
                 type="text"
-                className="border border-[rgba(14,252,239,0.3)] rounded px-3 py-0.5"
-              />
+             className="  px-4 py-2    rounded-[10px] border border-[rgba(14,252,239,0.3)] bg-[rgba(0,0,0,0.2)]"
+              
+             />
             </div>
             <div className="flex flex-col">
               <span className="">Profile Image</span>
@@ -285,8 +291,9 @@ function Profile() {
                     setImage(file);
                   }
                 }}
-                className="border border-[rgba(14,252,239,0.3)] rounded px-3 py-0.5"
-              />
+            className="  px-4 py-2    rounded-[10px] border border-[rgba(14,252,239,0.3)] bg-[rgba(0,0,0,0.2)]"
+              
+            />
               <img
                 src={user?.image ? user?.image : profileImgSrc}
                 className="w-15"
@@ -300,13 +307,15 @@ function Profile() {
                   onChange={(e) => setOtp(e.target.value)}
                   value={otp}
                   type="text"
-                  className="border border-[rgba(14,252,239,0.3)] rounded px-3 py-0.5"
-                />
+              className="  px-4 py-2    rounded-[10px] border border-[rgba(14,252,239,0.3)] bg-[rgba(0,0,0,0.2)]"
+              
+            />
                 <button
                   onClick={handleOtp}
                   disabled={sendingOtp || loading}
-                  className="border border-[rgba(14,252,239,0.3)] hover:bg-[#56CF82] transition ease-in-out duration-300 cursor-pointer px-3 py-0.5 rounded w-fit mt-3"
-                >
+                  className="border border-[rgba(14,252,239,0.3)] hover:bg-[rgba(14,252,239,0.1)] transition ease-in-out duration-300 cursor-pointer px-3 py-0.5 rounded w-fit mt-3"
+               
+               >
                   {sendingOtp
                     ? "Sending OTP..."
                     : loading
@@ -371,16 +380,13 @@ function Profile() {
               <button
                 onClick={handleSubmit}
                 disabled={loading}
-                className="text-black  
-  bg-[#3EECB5]
-  rounded-[8px]
-  px-4 py-2 text-sm font-medium
-  shadow-sm
-  transition-all duration-200 ease-in-out
-  hover:bg-[rgba(255,255,255,0.18)]
-  hover:text-white
-  hover:shadow-md
-  focus:outline-none w-fit mt-3"
+                className="  bg-cyan-400 text-black font-semibold hover:bg-cyan-300 
+                  rounded-[8px]
+                  px-4 py-2 text-sm 
+                  shadow-sm
+                  transition-all duration-200 ease-in-out
+                  hover:shadow-md
+                  focus:outline-none"
               >
                 {loading ? "Loading..." : "Submit"}
               </button>
@@ -392,7 +398,7 @@ function Profile() {
                   setImage(null);
                   setOtp("");
                 }}
-                className="bg-gray-500 hover:bg-gray-400 transition ease-in-out duration-300 cursor-pointer px-3 py-0.5 rounded w-fit mt-3"
+                className="bg-gray-500 hover:bg-gray-400 transition ease-in-out duration-300 cursor-pointer px-3  rounded w-fit"
               >
                 Cancel
               </button>

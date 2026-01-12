@@ -264,7 +264,7 @@ function Dashboard() {
       tag: (
         <div>
           Qualify rank & earn up to{" "}
-          <span className="text-[#1FD022] font-semibold">$ 20,00,000</span>
+          <span className="text-[#1FD022] font-semibold">$ 83,35,500</span>
         </div>
       ),
     },
@@ -494,6 +494,7 @@ function Dashboard() {
              <div className="grid grid-cols-1 md:grid-cols-1 gap-4 m-4">
               <ClaimReward
                 balanceRoi={dashboardData?.user_wallet?.roi_pending.toFixed(4)}
+                 restake_wallet={parseFloat(dashboardData?.user_wallet?.restake_wallet).toFixed(4)}
               />
             </div>
 

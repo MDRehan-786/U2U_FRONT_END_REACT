@@ -83,11 +83,13 @@ function LoginPassword() {
               value={currentPassword}
               onChange={(e) => setCurrentPassword(e.target.value)}
               type={showCurrent ? "text" : "password"}
-              className="border border-[rgba(14,252,239,0.3)]  rounded px-3 py-0.5 pr-10"
-            />
+        className="  px-4 py-2    rounded-[10px] border border-[rgba(14,252,239,0.3)] bg-[rgba(0,0,0,0.2)]"
+              
+         
+         />
             <span
               onClick={() => setShowCurrent(!showCurrent)}
-              className="absolute right-3 top-8 cursor-pointer text-gray-400"
+              className="absolute right-3 top-9 cursor-pointer text-gray-400"
             >
               {showCurrent ? <FaEyeSlash /> : <FaEye />}
             </span>
@@ -103,11 +105,13 @@ function LoginPassword() {
               onChange={(e) => setNewPassword(e.target.value)}
               placeholder="New Password"
               type={showNew ? "text" : "password"}
-              className="border border-[rgba(14,252,239,0.3)] rounded px-3 py-0.5 pr-10"
-            />
+           className="  px-4 py-2    rounded-[10px] border border-[rgba(14,252,239,0.3)] bg-[rgba(0,0,0,0.2)]"
+              
+          
+          />
             <span
               onClick={() => setShowNew(!showNew)}
-              className="absolute right-3 top-8 cursor-pointer text-gray-400"
+              className="absolute right-3 top-9 cursor-pointer text-gray-400"
             >
               {showNew ? <FaEyeSlash /> : <FaEye />}
             </span>
@@ -123,11 +127,13 @@ function LoginPassword() {
               onChange={(e) => setConfirmNewPassword(e.target.value)}
               placeholder="Re-Type Password"
               type={showConfirm ? "text" : "password"}
-              className="border border-[rgba(14,252,239,0.3)] rounded px-3 py-0.5 pr-10"
-            />
+             className="  px-4 py-2    rounded-[10px] border border-[rgba(14,252,239,0.3)] bg-[rgba(0,0,0,0.2)]"
+              
+          
+          />
             <span
               onClick={() => setShowConfirm(!showConfirm)}
-              className="absolute right-3 top-8 cursor-pointer text-gray-400"
+              className="absolute right-3 top-9 cursor-pointer text-gray-400"
             >
               {showConfirm ? <FaEyeSlash /> : <FaEye />}
             </span>
@@ -138,16 +144,13 @@ function LoginPassword() {
             <button
               onClick={handleSubmit}
               disabled={loading}
-              className=" text-black  
-  bg-[#3EECB5]
-  rounded-[8px]
-  px-4 py-2 text-sm font-medium
-  shadow-sm
-  transition-all duration-200 ease-in-out
-  hover:bg-[rgba(255,255,255,0.18)]
-  hover:text-white
-  hover:shadow-md
-  focus:outline-none w-fit mt-3"
+              className="   bg-cyan-400 text-black font-semibold hover:bg-cyan-300 
+                  rounded-[8px]
+                  px-4 py-2 text-sm 
+                  shadow-sm
+                  transition-all duration-200 ease-in-out
+                  hover:shadow-md
+                  focus:outline-none"
             >
               {loading ? "Resetting Password..." : "Submit"}
             </button>
@@ -158,7 +161,7 @@ function LoginPassword() {
                 setConfirmNewPassword("");
               }}
               disabled={loading}
-              className="bg-gray-500 hover:bg-gray-400 transition ease-in-out duration-300 cursor-pointer px-3 py-0.5 rounded w-fit mt-3"
+              className="bg-gray-500 hover:bg-gray-400 transition ease-in-out duration-300 cursor-pointer px-3  rounded w-fit"
             >
               Cancel
             </button>

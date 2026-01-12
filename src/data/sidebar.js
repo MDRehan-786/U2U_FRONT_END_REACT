@@ -32,7 +32,7 @@ export const sidebarLinkData = [
     title: "Network",
     icon: FaCircleHalfStroke,
     subRoute: [
-        { id: 31, title: "Referral Hub", icon: GoDotFill, path: "/referralhub" },
+        { id: 30, title: "Referral Hub", icon: GoDotFill, path: "/referralhub" },
       { id: 31, title: "My Direct", icon: GoDotFill, path: "/mydirect" },
       { id: 32, title: "Team Network", icon: GoDotFill, path: "/teamnetwork" },
       { id: 33, title: "Level Network", icon: GoDotFill, path: "/levelvolume" },

@@ -23,7 +23,23 @@ function DelegatorLevelBonus() {
   const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
  
+const levels={
+0:0,
+1:1,
+2:2,
+3:5,
+4:5,
+5:5,
+6:10,
+7:10,
+8:10,
+9:10,
+10:10
+};
 
+const currentLevel=dashboardData?.total_direct>10?20:levels[dashboardData?.total_direct];
+  
+  
   useEffect(() => {
     setScreenLoading(true);
     const fetchUserData = async () => {
@@ -176,7 +192,7 @@ function DelegatorLevelBonus() {
                 )
               },
               {
-                label: "Current Level", value:dashboardData?.total_direct, sub: "Total locked across all validators", svg: (
+                label: "Current Level", value:currentLevel, sub: "Total locked across all validators", svg: (
                 <svg  className="absolute top-0 inset-y-0 right-0 my-auto h-16 w-auto px-5"  viewBox="0 0 44 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g opacity="0.75">
                     <path d="M34.3605 19.0752H27.9443V44.9921H34.3605V19.0752Z" fill="url(#paint0_linear_125_1441)" />

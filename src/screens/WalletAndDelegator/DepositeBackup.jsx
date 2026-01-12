@@ -240,8 +240,9 @@ function DepositeFund() {
               value={amount}
               type="number"
               placeholder="Enter Amount"
-              className="border border-[rgba(14,252,239,0.3)] rounded px-3 py-0.5 pr-10"
-            />
+               className="  px-4 py-2    rounded-[10px] border border-[rgba(14,252,239,0.3)] bg-[rgba(0,0,0,0.2)]"
+              
+           />
           </div>
 
           <div className="flex flex-col">
@@ -250,8 +251,9 @@ function DepositeFund() {
               value={option}
               onChange={(e) => setOption(e.target.value)}
               required
-              className="rounded border border-[rgba(14,252,239,0.3)] px-3 py-0.5"
-            >
+                className="  px-4 py-2    rounded-[10px] border border-[rgba(14,252,239,0.3)] bg-[rgba(0,0,0,0.2)]"
+              
+           >
               {options?.map((item, index) => (
                 <option key={index} value={item}>
                   {item}
@@ -266,16 +268,14 @@ function DepositeFund() {
                 onClick={handleSubmit}
                 // disabled
                 disabled={disableSubmit}
-                className=" text-black  
-  bg-[#3EECB5]
-  rounded-[8px]
-  px-4 py-2 text-sm font-medium
-  shadow-sm
-  transition-all duration-200 ease-in-out
-  hover:bg-[rgba(255,255,255,0.18)]
-  hover:text-white
-  hover:shadow-md
-  focus:outline-none w-fit mt-3 disabled:cursor-not-allowed    "
+                className=" 
+                  bg-cyan-400 text-black font-semibold hover:bg-cyan-300 
+                  rounded-[8px]
+                  px-4 py-2 text-sm 
+                  shadow-sm
+                  transition-all duration-200 ease-in-out
+                  hover:shadow-md
+                  focus:outline-none   "
               >
                 {disableSubmit ? "Depositing..." : "Submit"}
               </button>

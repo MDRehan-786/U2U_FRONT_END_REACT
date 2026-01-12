@@ -72,12 +72,29 @@ function RankVolume() {
                 </tr>
               ) : (
                 data.map((item, index) => (
-                  <tr key={index}>
-                    <td className="text-nowrap ">{item.criteria}</td>
-                    <td className="text-nowrap">{item.strong_leg}</td>
-                    <td className="text-nowrap">{item.other_leg}</td>
-                    <td className="text-nowrap">{item.reward}</td>
-                  </tr>
+                 <tr key={index}>
+  <td className="text-nowrap">{item.criteria}</td>
+
+  <td className="text-nowrap">
+    {item.strong_leg}
+    <br />
+ 
+   {item.power_leg_restake !== null &&
+ item.power_leg_restake !== undefined && (
+   <i>Restake : ${item.power_leg_restake}</i>
+ )}
+  </td>
+
+  <td className="text-nowrap">{item.other_leg}
+    <br/>
+       {item.power_leg_restake !== null &&
+ item.power_leg_restake !== undefined && (
+   <i>Restake : ${item.other_leg_restake}</i>
+ )}
+  </td>
+  <td className="text-nowrap">{item.reward}</td>
+</tr>
+
                 ))
               )}
             </tbody>

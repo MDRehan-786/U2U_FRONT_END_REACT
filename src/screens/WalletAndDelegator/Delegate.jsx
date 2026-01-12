@@ -25,6 +25,19 @@ function Delegate() {
   const [name, setName] = useState("");
   const [debouncedUsername, setDebouncedUserame] = useState("");
 
+const [days30, setdays30] = useState(0);
+const [days90, setdays90] = useState(0);
+const [days180, setdays180] = useState(0);
+const [days365, setdays365] = useState(0);
+
+const daysMap = {
+  "30 days": days30,
+  "90 days": days90,
+  "180 days": days180,
+  "365 days": days365,
+};
+
+
     const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -38,7 +51,8 @@ function Delegate() {
 
     const tenPerc = calculatedAmount / 10;
     const total = parseFloat(calculatedAmount) + parseFloat(tenPerc);
-
+    
+    
     setAmount(calculatedAmount.toFixed(2));
     setPlatformFee(tenPerc.toFixed(2));
     setTotalAmount(total.toFixed(2));
@@ -335,7 +349,11 @@ function Delegate() {
                 const val = e.target.value;
                 const tenPerc = val / 10;
                 const total = parseFloat(val) + parseFloat(tenPerc);
-
+               setdays30((val*0.36/100)*30);
+                setdays90((val*0.36/100)*60);
+                setdays180((val*0.36/100)*90);
+                setdays365((val*0.36/100)*365);
+    
                 setAmount(val);
                 setPlatformFee(tenPerc ? tenPerc : "");
                 setTotalAmount(total ? total : "");
@@ -388,7 +406,8 @@ function Delegate() {
               onChange={(e) => setRemark(e.target.value)}
               placeholder="Enter Remark"
               className="w-full   px-4 py-2    rounded-[10px] border border-[rgba(14,252,239,0.3)] bg-[rgba(0,0,0,0.2)] "
-            />
+         
+         />
           </div>
 
           {/* Percentage Buttons */}
@@ -418,7 +437,7 @@ function Delegate() {
             {["30 days", "90 days", "180 days", "365 days"].map(label => (
               <div key={label} className="flex justify-between">
                 <span>{label}</span>
-                <span>30,000.00 U2U</span>
+                 <span>{daysMap[label].toFixed(2)}</span>
               </div>
             ))}
           </div>
@@ -443,16 +462,13 @@ function Delegate() {
             onClick={handleSubmit}
             disabled={loading}
             className="w-full
-                text-[#3EECB5]
-  bg-[rgba(255,255,255,0.1)]
-  rounded-[8px]
-  px-4 py-3 text-sm font-medium
-  shadow-sm
-  transition-all duration-200 ease-in-out
-  hover:bg-[rgba(255,255,255,0.18)]
-  hover:text-white
-  hover:shadow-md
-  focus:outline-none
+                 bg-cyan-400 text-black font-semibold hover:bg-cyan-300 
+                  rounded-[8px]
+                  px-4 py-3 text-sm 
+                  shadow-sm
+                  transition-all duration-200 ease-in-out
+                  hover:shadow-md
+                  focus:outline-none
               ">
 
 

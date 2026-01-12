@@ -11,13 +11,41 @@ const Footer = React.lazy(() => import("../components/common/Footer"));
 function Notifications() {
   const { user, isConnected, token } = useUserStore();
   const { baseUrl, setScreenLoading } = useConstStore();
-  const notifications = Array.from({ length: 9 }, (_, i) => ({
-    id: i,
-    title: i === 0 ? "268 × 20" : "Asia Validator",
-    message:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s.",
-    time: "24 Jun 2025 12:35 PM",
-  }));
+
+ const [data, setData] = useState([]);
+
+
+  useEffect(() => {
+    // console.log(user?.id);
+    setScreenLoading(true);
+    const fetchUserData = async () => {
+      if (user && isConnected) {
+        try {
+          const response = await axios.post(
+            `${baseUrl}transactions`,
+          { user_id: user?.id },
+            {
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          console.log(response.data.data);
+          if (response.data.status === 200) {
+            setData(response.data.data);
+            // setFilteredData(response.data.data);
+          }
+        } catch (error) {
+          console.error(error);
+        } finally {
+          setScreenLoading(false);
+        }
+      }
+    };
+    fetchUserData();
+  }, [user, isConnected, token, baseUrl]);
+
 
 
   return (
@@ -38,9 +66,9 @@ function Notifications() {
       </div>
 
 
-    <div className="w-full rounded-xl border border-cyan-400/60 p-3 bg-[#0a2a2f]">
+    <div className="w-full rounded-xl border border-[rgba(14,252,239,0.3)] p-3  ">
       <div className="flex flex-col gap-2">
-        {notifications.map((item) => (
+        {data.map((item) => (
           <div
             key={item.id}
             className="flex items-start gap-3 p-3 rounded-lg
@@ -65,16 +93,18 @@ function Notifications() {
             {/* Content */}
             <div className="flex-1">
               <p className="text-sm font-semibold text-emerald-400">
-                {item.title}
+           {item.type?.toUpperCase() ?? "—"}
               </p>
               <p className="text-xs text-white/70 leading-relaxed">
-                {item.message}
+          {item.description}
+
+
               </p>
             </div>
 
             {/* Time */}
             <div className="text-xs text-white/50 whitespace-nowrap">
-              {item.time}
+              {item.created_at}
             </div>
           </div>
         ))}

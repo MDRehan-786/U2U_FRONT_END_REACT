@@ -19,25 +19,14 @@ function RankAndLeaderboard() {
   const [msg, setMsg] = useState("");
 
   const [data, setData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
+  const [data2, setData2] = useState([]);
+
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [searchValue, setSearchValue] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const strongLeg = 200;
-  const jointLeg = 0;
-  const target = 1000;
 
-  const levels = Array.from({ length: 9 }, (_, i) => ({
-    level: i + 1,
-    stake: "$1,000",
-    duration: "4 Months Salary",
-    reward: "$25 Reward",
-    phone: "Uphone",
-    country: "Vietnam",
-    speed: "4M/5D",
-    price: "$500",
-  }));
 
+  
 
 
   useEffect(() => {
@@ -46,20 +35,38 @@ function RankAndLeaderboard() {
     const fetchUserData = async () => {
       if (user && isConnected) {
         try {
-          const response = await axios.post(
-            `${baseUrl}delegator_reward`,
-            { user_id: user?.id },
+
+             const [rankRes,rankRes2] = await Promise.all([
+            axios.get(
+            `${baseUrl}rank_setting`,
             {
               headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
               },
             }
-          );
+          ),
+            axios.post(`${baseUrl}rankandleaderboard`,
+                { user_id: user?.id },
+              {
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+            }),
+          ]);
+       
+          
+          
+          ;
           // console.log(response.data.data);
-          if (response.data.status === 200) {
-            setData(response.data.data);
-            setFilteredData(response.data.data);
+          if (rankRes.data.status === 200) {
+            setData(rankRes.data.data);
+          }
+
+           // console.log(response.data.data);
+          if (rankRes2.data.status === 200) {
+            setData2(rankRes2.data.data);
           }
         } catch (error) {
           console.error(error);
@@ -71,49 +78,15 @@ function RankAndLeaderboard() {
     fetchUserData();
   }, []);
 
-  useEffect(() => {
-    let filtered = [...data];
 
-    if (searchValue.trim() !== "") {
-      const search = searchValue.toLowerCase();
-      filtered = filtered.filter((item) =>
-        item.trans_id?.toLowerCase().includes(search)
-      );
-    }
 
-    setFilteredData(filtered);
-    setCurrentPage(1);
-  }, [searchValue, data]);
+ 
+  const target = data?.[user.rank_id]?.strong_lag;
+  const strongLeg = data2?.strong_leg_business>target ?target:data2?.strong_leg_business;
+  const jointLeg =  data2?.other_leg_business>target ?target:data2?.other_leg_business ;
+ const powerLegRestake =  data2?.power_leg_restake;
+ const otherLegRestake =  data2?.other_leg_restake;
 
-  const handleChangeRows = (e) => {
-    setRowsPerPage(Number(e.target.value));
-    setCurrentPage(1);
-  };
-
-  const handleSearch = (e) => {
-    setSearchValue(e.target.value);
-    setCurrentPage(1);
-  };
-
-  const totalPages = Math.ceil(filteredData.length / rowsPerPage);
-  const startIdx = (currentPage - 1) * rowsPerPage;
-  const endIdx = startIdx + rowsPerPage;
-  const currentRows = filteredData.slice(startIdx, endIdx);
-
-  const getPageNumbers = () => {
-    const maxVisible = 5;
-    if (totalPages <= maxVisible) {
-      return Array.from({ length: totalPages }, (_, i) => i + 1);
-    }
-    const pages = [1];
-    const left = Math.max(2, currentPage - 1);
-    const right = Math.min(totalPages - 1, currentPage + 1);
-    if (left > 2) pages.push("…");
-    for (let i = left; i <= right; i++) pages.push(i);
-    if (right < totalPages - 1) pages.push("…");
-    pages.push(totalPages);
-    return pages;
-  };
 
 
 
@@ -153,7 +126,7 @@ function RankAndLeaderboard() {
               {[
                 {
                   label: "Level",
-                  value: 16,
+                  value: user?.rank_id,
                   sub: "Your Current Rank",
                   svg: (
                     <svg
@@ -172,7 +145,7 @@ function RankAndLeaderboard() {
                 },
                 {
                   label: "Monthly Reward",
-                  value: `$${dashboardData?.daily_profit_today?.toFixed(4) ?? "0.0000"}`,
+                  value: `$${data2?.monthly_reward?.toFixed(4) ?? "0.0000"}`,
                   sub: "Total locked across all validators",
                   svg: (
                     <svg
@@ -203,15 +176,16 @@ function RankAndLeaderboard() {
 
             {/* Progress Section */}
             <div className="rounded-xl ">
-              <h3 className="font-semibold mb-4">Progress to 1</h3>
+              <h3 className="font-semibold mb-4">Progress to {user?.rank_id+1}</h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Strong Leg */}
                 <div>
                   <div className="flex justify-between text-sm mb-2">
-                    <span className="opacity-80">Strong Leg</span>
-                    <span className="font-semibold">
-                      ${strongLeg} / ${target}
+                    <span className="opacity-80 tracking-tighter">Strong Leg</span>
+                    <span className="font-semibold ">
+                      ${strongLeg}<i class='text-[10px] md:text-xs font-normal'> ( Restake : ${powerLegRestake} ) </i>
+                     <span className="tracking-tighter"> / ${target}</span> 
                     </span>
                   </div>
                   <div className="w-full h-2 rounded-full bg-white/20">
@@ -225,9 +199,10 @@ function RankAndLeaderboard() {
                 {/* Joint Leg */}
                 <div>
                   <div className="flex justify-between text-sm mb-2">
-                    <span className="opacity-80">Joint Leg</span>
+                    <span className="opacity-80 tracking-tighter">Joint Leg</span>
                     <span className="font-semibold">
-                      ${jointLeg} / ${target}
+                      ${jointLeg}<i class='text-[10px] md:text-xs font-normal'> ( Restake : ${otherLegRestake} )</i>  
+                        <span className="tracking-tighter"> / ${target}</span> 
                     </span>
                   </div>
                   <div className="w-full h-2 rounded-full bg-white/20">
@@ -256,7 +231,7 @@ function RankAndLeaderboard() {
 
       </div>
       {/* Bottom Table */}
-  <div className="rounded-[10px] border border-[rgba(14,252,239,0.3)] p-4">
+  <div className="rounded-[10px] my-3 border border-[rgba(14,252,239,0.3)] p-4">
   {/* Header */}
   <div className="flex items-center gap-2 border-b border-white/20 pb-3 mb-4 text-lg font-semibold">
     <TfiWallet />
@@ -265,15 +240,15 @@ function RankAndLeaderboard() {
 
   {/* Table */}
   <div className="overflow-hidden  bg-white/10 rounded-[10px]">
-    {levels.map((item, index) => (
+    {data.map((item, index) => (
       <div
         key={index}
         className="grid grid-cols-1 gap-4 p-4 border-b border-white/10 last:border-b-0
                    md:grid-cols-2
-                   xl:grid-cols-4 xl:items-center"
+                   xl:grid-cols-2 xl:items-start"
       >
         {/* Level */}
-        <div className="flex items-center justify-center gap-3">
+        <div className="flex gap-3">
           <svg
             className="w-5 h-5 mt-1 shrink-0 text-white/80"
             viewBox="0 0 20 19"
@@ -290,20 +265,20 @@ function RankAndLeaderboard() {
 
           <div>
             <p className="text-sm font-semibold text-white">
-              Level {item.level}
+              Rank {item.id}
             </p>
             <p className="text-xs text-white/60 leading-relaxed">
-              Stake: {item.stake}
+           Power Leg : ${item.strong_lag} | Other leg : ${item.other_lag} |&nbsp;   
               <br className="md:hidden" />
-              {item.duration} · {item.reward}
+              {item.duration!=0? item.duration+" Months Salary":"One Time Income"} | ${item.reward_amount} Reward
             </p>
           </div>
         </div>
 
         {/* Phone */}
-        <div className="flex items-center justify-center  rounded-lg">
+        {/* <div className="flex items-center justify-center  rounded-lg">
           <div className="flex items-center justify-center  rounded-lg bg-white/5 p-5">
-          <span className="text-sm text-white">{item.phone}</span>
+          <span className="text-sm text-white"> phone</span>
           <img
             src={uphoneImg}
             alt="phone"
@@ -312,10 +287,10 @@ function RankAndLeaderboard() {
           </div>
 
           
-        </div>
+        </div> */}
      
         {/* Country */}
-        <div className="flex items-center justify-center  rounded-lg">
+        {/* <div className="flex items-center justify-center  rounded-lg">
           <div className="flex items-center justify-center  rounded-lg bg-white/5 p-5">
           <div>
             <p className="text-sm text-white">{item.country}</p>
@@ -327,12 +302,12 @@ function RankAndLeaderboard() {
             className="w-15 h-10 rounded object-cover"
           />
           </div>
-        </div>
+        </div> */}
 
         {/* Price */}
-        <div className="text-center items-center justify-between md:text-center xl:text-center">
-          <span className="text-sm font-semibold text-white">
-            {item.price}
+        <div className="text-left items-center justify-between md:text-center xl:text-left">
+          <span className="text-sm  text-white/70">
+            {item.description??'--'}
           </span>
         </div>
       </div>

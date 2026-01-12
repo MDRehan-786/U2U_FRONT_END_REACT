@@ -8,7 +8,7 @@ import metaMask from "../../../public/metamask.png";
 function Intro({ address }) {
   const { user } = useUserStore();
   const text = `https://u2uglobal.xyz/register/${user?.username}`;
-  const wallet_address=user?.wallet_address;
+  const wallet_address=user?.wallet_address??'0x00000';
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(

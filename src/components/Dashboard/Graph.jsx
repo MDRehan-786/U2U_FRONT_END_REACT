@@ -28,6 +28,8 @@ function Graph() {
 
   const series = [parseFloat(total_principle), parseFloat(total_income_2x), parseFloat(total_capping_2x)];
 
+
+
   const options = {
     chart: {
       type: "donut",
@@ -177,6 +179,9 @@ function Graph() {
 
   ];
 
+
+  // console.log(series,options,series1,options1);
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-5">
       <div className="md:col-span-12 text-sm leading-4 ">
@@ -195,7 +200,7 @@ function Graph() {
                   <path d="M9.83333 6.72634C9.70127 6.72461 9.57507 6.67141 9.48167 6.57801C9.38827 6.48461 9.33507 6.35841 9.33333 6.22634V4.33301H7.5C7.3674 4.33301 7.2402 4.28034 7.14647 4.18654C7.05267 4.09279 7 3.96561 7 3.83301C7 3.7004 7.05267 3.57322 7.14647 3.47945C7.2402 3.38569 7.3674 3.33301 7.5 3.33301H9.83333C9.9654 3.33473 10.0916 3.38797 10.185 3.48136C10.2784 3.57476 10.3316 3.70093 10.3333 3.83301V6.22634C10.3316 6.35841 10.2784 6.48461 10.185 6.57801C10.0916 6.67141 9.9654 6.72461 9.83333 6.72634Z" fill="white" />
                 </svg>
               </span>
-              2X Earnings Progress
+              2.4X Earnings Progress
             </div>
 
 
@@ -262,7 +267,7 @@ function Graph() {
                   <path d="M9.83333 6.72634C9.70127 6.72461 9.57507 6.67141 9.48167 6.57801C9.38827 6.48461 9.33507 6.35841 9.33333 6.22634V4.33301H7.5C7.3674 4.33301 7.2402 4.28034 7.14647 4.18654C7.05267 4.09279 7 3.96561 7 3.83301C7 3.7004 7.05267 3.57322 7.14647 3.47945C7.2402 3.38569 7.3674 3.33301 7.5 3.33301H9.83333C9.9654 3.33473 10.0916 3.38797 10.185 3.48136C10.2784 3.57476 10.3316 3.70093 10.3333 3.83301V6.22634C10.3316 6.35841 10.2784 6.48461 10.185 6.57801C10.0916 6.67141 9.9654 6.72461 9.83333 6.72634Z" fill="white" />
                 </svg>
               </span>
-              5X Earnings Progress
+              5.4X Earnings Progress
             </div>
 
             <div className="py-3 flex-col gap-6 items-center">

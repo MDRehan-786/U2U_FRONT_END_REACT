@@ -17,13 +17,13 @@ function Transaction() {
       </div>
       <div className="flex gap-3 pb-50 items-center  
                 bg-[rgba(0,0,0,0.001)]
-                shadow-[0px_4px_4px_rgba(0,0,0,0.25)]  p-3 text-lg font-semibold">
+                shadow-[0px_4px_4px_rgba(0,0,0,0.25)]  p-3  ">
         <div className="overflow-x-auto w-full   
                  
                 bg-[rgba(0,0,0,0.001)]
                 shadow-[0px_4px_4px_rgba(0,0,0,0.25)] ">
-          <table className="table w-full">
-            <thead className="text-white ">
+          <table className="table w-full text-xs">
+            <thead className="text-gray-300 ">
               <tr className="bg-[rgba(255,255,255,0.1)]">
                 <th className=' '>Transaction Id</th>
                 <th>Amount</th>

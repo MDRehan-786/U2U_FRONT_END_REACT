@@ -16,8 +16,7 @@ function RewardHistory() {
   const { user, isConnected, token } = useUserStore();
   const { baseUrl, setScreenLoading } = useConstStore();
   const { dashboardData, setDashBoardData } = useDashboardStore();
-  const [title, setTitle] = useState("");
-  const [msg, setMsg] = useState("");
+
  
     const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -33,7 +32,7 @@ function RewardHistory() {
       if (user && isConnected) {
         try {
           const response = await axios.post(
-            `${baseUrl}referral_bonus`,
+            `${baseUrl}rank_reward`,
             { user_id: user?.id },
             {
               headers: {
@@ -44,8 +43,8 @@ function RewardHistory() {
           );
           // console.log(response.data.data);
           if (response.data.status === 200) {
-            setData(response.data.data.logs);
-            setFilteredData(response.data.data.logs);
+            setData(response.data.data.list);
+            setFilteredData(response.data.data.list);
           }
         } catch (error) {
           console.error(error);
@@ -133,7 +132,7 @@ function RewardHistory() {
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-2">
             {[
               {
-                label: "Total Earned", value:dashboardData?.total_direct, sub: "Total locked across all validators", svg: (
+                label: "Total Earned", value:"$"+dashboardData?.estimate_rank_income, sub: "Total locked across all validators", svg: (
                   <svg className="absolute top-0 inset-y-0 right-0 my-auto h-16 w-auto px-2"  viewBox="0 0 72 43" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g opacity="0.75">
                     <path d="M30.2796 20.7668C31.3783 25.3584 32.4668 29.9073 33.5553 34.4562C33.6 34.4518 33.6447 34.4472 33.6895 34.4428C33.8348 33.4848 33.9734 32.5258 34.1271 31.5692C34.4045 29.8431 34.6804 28.1167 34.9825 26.3949C35.0402 26.0665 35.0023 25.8324 34.7706 25.5847C34.4541 25.2464 34.183 24.8657 33.8695 24.4746C34.6019 23.6897 35.3217 22.9182 36.0805 22.1049C36.826 22.933 37.5248 23.7093 38.2498 24.5146C37.9531 24.8499 37.7121 25.1655 37.4261 25.4329C37.1487 25.6924 37.0944 25.9784 37.1495 26.3319C37.5549 28.9308 37.9522 31.531 38.3546 34.1304C38.3693 34.225 38.4113 34.3154 38.486 34.5514C39.6212 29.8814 40.7225 25.3509 41.8467 20.7263C42.7161 21.0457 43.5526 21.3065 44.3512 21.6542C47.7856 23.1498 50.5325 25.4321 52.3279 28.7667C53.5365 31.0115 54.0649 33.4368 54.1432 35.9659C54.1757 37.0148 54.1252 38.0661 54.1416 39.1159C54.1468 39.4443 54.0061 39.5819 53.7294 39.6982C50.7515 40.9494 47.6625 41.8074 44.4735 42.2998C40.8567 42.8584 37.2199 43.0954 33.5601 42.911C28.35 42.6484 23.2816 41.7095 18.4156 39.7791C18.0164 39.6208 17.8726 39.4194 17.8711 38.9792C17.8644 37.1146 17.7502 35.2539 18.1093 33.3985C18.9129 29.2476 20.9731 25.9149 24.4308 23.4598C26.0631 22.3008 27.85 21.4656 29.7646 20.8952C29.9202 20.8488 30.0799 20.8162 30.2796 20.7668Z" fill="url(#paint0_linear_125_788)" />
@@ -178,7 +177,7 @@ function RewardHistory() {
                 )
               },
               {
-                label: "Total Claimed", value:"$"+dashboardData?.direct_income.toFixed(4), sub: "Total locked across all validators", svg: (
+                label: "Total Claimed", value:"$"+dashboardData?.rank_income, sub: "Total locked across all validators", svg: (
                 <svg className="absolute top-0 inset-y-0 right-0 my-auto h-16 w-auto px-5" width="47" height="45" viewBox="0 0 47 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g opacity="0.75">
                     <path d="M24.549 10.9993C36.5608 10.774 44.2592 3.32397 44.2592 3.32397C44.2592 3.32397 50.1344 6.71359 42.859 12.7285C35.5835 18.7434 23.1077 13.1943 23.1077 13.1943L24.549 10.9993Z" fill="url(#paint0_linear_125_1426)" />
@@ -234,7 +233,10 @@ function RewardHistory() {
               },
              
            {
-                label: "Rewards Balance", value:"$"+dashboardData?.total_investment.toFixed(4), sub: "Total locked across all validators", svg: (
+                label: "Rewards Balance", value:
+  "$" +
+  ((dashboardData?.estimate_rank_income ?? 0) -
+   (dashboardData?.rank_income ?? 0)), sub: "Total locked across all validators", svg: (
                <svg
        className="absolute top-0 inset-y-0 right-0 my-auto h-28 w-auto px-5"
     
@@ -328,20 +330,21 @@ function RewardHistory() {
         <div className="overflow-x-auto w-full max-w-full mt-4 h-118">
           <table className="table w-full text-xs ">
             <thead className="text-gray-300">
-               <tr className="bg-[rgba(255,255,255,0.1)]">
-               <th>#</th>
+
+             <tr className="bg-[rgba(255,255,255,0.1)]">
+                <th>#</th>
                 <th>Date</th>
-                <th>UserId</th>
-                <th>Level</th>
-                <th>Amount</th>
-                <th>%</th>
-                <th>Bonus</th>
+                <th>Rank</th>
+                <th>Enroll Amount</th>
+                <th>Type</th>
+                <th>Reward</th>
               </tr>
+           
             </thead>
-              <tbody>
+             <tbody>
               {currentRows.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="text-center">
+                  <td colSpan={4} className="text-center">
                     No Data Found
                   </td>
                 </tr>
@@ -351,26 +354,23 @@ function RewardHistory() {
                     key={index}
                     className={
                       (index + startIdx) % 2 === 0
-                           ? "bg-[rgba(0,0,0,0.001)]"
-                        : "bg-[rgba(0,0,0,0.001)]"
+                        ? " "
+                        : " "
                     }
                   >
-                    <td className="flex gap-2 items-center text-nowrap">
-                      {index + 1}
-                    </td>
+                    <td className="text-nowrap">{index + 1}</td>
                     <td className="text-nowrap">
+                      {" "}
                       {item.created_at != "-"
                         ? new Date(item.created_at).toLocaleString("en-GB", {
-                            hour12: false,
-                          })
+                          hour12: false,
+                        })
                         : "-"}
                     </td>
-
-                    <td className="text-nowrap">{item.username}</td>
-                    <td className="text-nowrap">{item.level}</td>
-                    <td className="text-nowrap">$ {item.net_amount}</td>
-                    <td className="text-nowrap">{item.perc}</td>
-                    <td className="text-nowrap">$ {item.amount}</td>
+                    <td className="text-nowrap">{item?.rank_name ?? "-"}</td>
+                    <td className="text-nowrap">$ {item?.ramount ?? "-"}</td>
+                    <td className="text-nowrap">{item?.reward_type ? (item?.reward_type[0].toUpperCase() + item.reward_type.slice(1,)) : "-"}</td>
+                    <td className="text-nowrap">{item?.description ?? "-"}</td>
                   </tr>
                 ))
               )}
