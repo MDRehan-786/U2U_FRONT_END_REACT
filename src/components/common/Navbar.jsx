@@ -15,6 +15,7 @@ function Navbar() {
 
   return (
     <div className="h-15 flex items-center justify-between px-6">
+    
       <div className="flex items-center sm:gap-8 md:gap-15">
         <img
           src={logoImgSrc}
@@ -28,6 +29,31 @@ function Navbar() {
           <MdMenuOpen />
         </div>
       </div>
+ <a
+  href="https://newlook.u2uglobal.xyz/signin"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center text-base sm:text-lg font-bold text-yellow-400 animate-pulse hover:text-yellow-300 transition"
+>
+  ✨ Experience the new UI
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="w-4 sm:w-5 h-4 sm:h-5 ml-2"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M14 3h7v7m0-7L10 14M5 10v10h10"
+    />
+  </svg>
+</a>
+
+   
+
       <div
         onClick={() => {
           setIsProfileDetailOpen((prev) => !prev);
